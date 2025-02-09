@@ -14,5 +14,6 @@ test('Verify related products appear in the main product page', async ({ page })
   await page1.locator('.PIgf').click();
   await page1.waitForSelector('[data-testid="x-atf-left-bottom-river"]');
   const buttonCount = await page1.locator('[data-testid="x-atf-left-bottom-river"] a[data-track]').count();
-  console.log(`Number of buttons with data-ebayui inside [data-testid="x-atf-left-bottom-river"]: ${buttonCount}`);
+  //Number of buttons with data-ebayui inside
+  console.log(`Number of Related products [data-testid="x-atf-left-bottom-river"]: ${buttonCount}`);
 });
