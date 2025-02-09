@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('Verify related products appear', async ({ page }) => {
+test('Verify related products appear in the main product page', async ({ page }) => {
   await page.goto('https://www.ebay.com/');
   await page.getByRole('combobox', { name: 'Search for anything' }).click();
   await page.getByRole('combobox', { name: 'Search for anything' }).fill('wallet men');
@@ -12,9 +12,7 @@ test('Verify related products appear', async ({ page }) => {
   await page.waitForTimeout(1000);
   await expect(page1.getByRole('heading', { name: 'Similar items' })).toBeVisible();
   await page1.locator('.PIgf').click();
-// Wait for the element with data-testid="x-atf-left-bottom-river"
-await page1.waitForSelector('[data-testid="x-atf-left-bottom-river"]');
-// Count buttons inside the target element that have the 'data-ebayui' attribute
-const buttonCount = await page1.locator('[data-testid="x-atf-left-bottom-river"] a[data-track]').count();
-console.log(`Number of buttons with data-ebayui inside [data-testid="x-atf-left-bottom-river"]: ${buttonCount}`);
+  await page1.waitForSelector('[data-testid="x-atf-left-bottom-river"]');
+  const buttonCount = await page1.locator('[data-testid="x-atf-left-bottom-river"] a[data-track]').count();
+  console.log(`Number of buttons with data-ebayui inside [data-testid="x-atf-left-bottom-river"]: ${buttonCount}`);
 });
